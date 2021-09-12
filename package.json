@@ -7,6 +7,7 @@
     "start": "node dist/src/index.js",
     "dev": "./node_modules/.bin/run-s copy:env:dev build:nodemon",
     "test": "jest",
+	"coverage": "jest --collect-coverage",
     "build": "./node_modules/.bin/tsc",
     "prebuild": "rm -Rf dist",
     "build:nodemon": "nodemon --exec ./node_modules/.bin/ts-node -- ./src/index.ts",

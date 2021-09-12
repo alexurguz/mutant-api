@@ -3,11 +3,11 @@ import * as express from 'express';
 import IRoute from '../../../domain/IRoute';
 import Database from '../../../datasource/database';
 import PingUseCase from '../use-case/PingUseCase';
-import PingMongodb from '../repository/PingMongodb';
+import PingRepository from '../repository/PingRepository';
 
 export default class PingRoute implements IRoute {
     async register(server: Server, database: Database<any>): Promise<any> {
-        const repository = new PingMongodb(database);
+        const repository = new PingRepository(database);
         const useCase = new PingUseCase(repository);
 
         server.getApp()?.get('/ping', async (req: express.Request, res: express.Response) => {

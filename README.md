@@ -129,6 +129,12 @@ This project was implemented using the next tools or libraries:
 4. (Optional) Execute test:
 
     ```bash
-    npm test
+    npm run test
+    ```
+
+5. (Optional) Execute coverage test:
+
+    ```bash
+    npm run coverage
     ```
 
