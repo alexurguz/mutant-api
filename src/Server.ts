@@ -10,7 +10,6 @@ export default class Server {
     constructor(private database: Database<any>) {}
 
     public async start() {
-		console.log('server::::', this, 'base de datos::::', this.database);
         this._instance = express();
         let bodyParser = require('body-parser');
         this._instance.use( bodyParser.json() );

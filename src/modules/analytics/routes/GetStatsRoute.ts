@@ -11,7 +11,6 @@ import StatsNotFoundError from "../../../domain/errors/StatsNotFoundError"
 
 export default class GetStatsRoute implements IRoute {
     async register(server: Server, database: Database<any>): Promise<any> {
-
         const getStatsRepository = new GetStatsRepository(database);
         const getStatsUseCase = new GetStatsUseCase(getStatsRepository);
 
