@@ -8,7 +8,7 @@ export default class GetStatsRepository extends Respository<Database<Db>> {
         let db = await this.dataSource.getConnection();
         const mutants = await db.collection(MongoCollection.DNA).find({ isMutant: true }).count();
 		const humans = await db.collection(MongoCollection.DNA).find({ isMutant: false }).count();
-		const ratio = humans ? (mutants / humans): 0;
+		const ratio = (humans ? (mutants / humans): 0).toFixed(1);
 
 		const result = {
 			count_mutant_dna: mutants,

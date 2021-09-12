@@ -1,0 +1,40 @@
+#%RAML 1.0
+title: Challenge Tecnico API
+description: Challenge para candidatos a developer Mercadolibre
+mediaType: application/json
+/mutant:
+  description: Manage mutant data
+  post:
+    description: Validate if a dna string is mutant.
+    body:
+      application/json:
+        example: |
+          { "dna":["ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","ACACTG"] }
+    responses:
+      200:
+      403:
+/stats:
+  description: Contains the analytics results
+  get:
+    description: Get the information about the statistics mutant verification.
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              { "count_mutant_dna": 2, "count_human_dna": 7, "ratio": "0.3" }
+      404:
+        body:
+          application/json:
+            example: |
+              { "message": "Stats not found " }
+/ping:
+  description: Validate if the api is working on
+  get:
+    description: Get status to the api.
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              { "ping": true }

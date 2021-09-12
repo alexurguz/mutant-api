@@ -15,7 +15,7 @@ export default class GetStatsRoute implements IRoute {
         const getStatsRepository = new GetStatsRepository(database);
         const getStatsUseCase = new GetStatsUseCase(getStatsRepository);
 
-        server.getApp()?.get('/stats', async (req: express.Request, res: express.Response) => {
+        server.getApp()?.get('/stats/', async (req: express.Request, res: express.Response) => {
             try {
 
                 const stat: Stat = await getStatsUseCase.exec();
