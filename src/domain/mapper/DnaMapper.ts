@@ -1,10 +1,10 @@
 /**
- * Class with DnaDto
+ * Class with DnaMapper
  *
  * @author jurbano
  * @since 2021-09-11
  */
-export default class DnaDTO {
+export default class DnaMapper {
     dna: string [];
 	isMutant: boolean;
 

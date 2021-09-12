@@ -10,7 +10,7 @@ import SaveMutantRepository from '../repository/SaveMutantRepository';
 import SaveMutantUseCase from '../use-case/SaveMutantUseCase';
 import ApiError from '../../../domain/errors/ApiError';
 import Dna from "../../../domain/models/Dna";
-import DnaDTO from "../../../domain/dto/DnaDTO";
+import DnaMapper from "../../../domain/mapper/DnaMapper";
 import Constants from "../../../helpers/Constants";
 
 interface DnaValidatorRequestSchema extends ValidatedRequestSchema {
@@ -37,12 +37,17 @@ export default class SaveMutantRoute implements IRoute {
         server.getApp()?.post('/mutant', validator.body(querySchema),
             async (req: ValidatedRequest<DnaValidatorRequestSchema>, res: express.Response) => {
             try {
-                const dnaDTO: DnaDTO = req.body as DnaDTO; 
+                const dnaMapper: DnaMapper = req.body as DnaMapper; 
 
-                const dna: Dna = new Dna(dnaDTO.dna, dnaDTO.isMutant);
-                const result = await saveMutantUseCase.exec(dna);
-
-                return res.status(200).json(result);
+				dnaMapper.isMutant = false;
+                const dna: Dna = new Dna(dnaMapper.dna, dnaMapper.isMutant);
+                await saveMutantUseCase.exec(dna);
+				console.log('Dna::', dna.isMutant);
+				if ( dna.isMutant ){
+					return res.status(200).json();
+				} else {
+					return res.status(403).json();
+				}
             } catch (error) {
                 console.error('saveMutantRoute', error);
                 if (error instanceof ApiError) {
