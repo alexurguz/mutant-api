@@ -8,7 +8,6 @@ export default class GetDnaIfExistsRepository extends Respository<Database<Db>> 
         let db = await this.dataSource.getConnection();
         const filter = { dna }
         const result = await db.collection(MongoCollection.DNA).findOne(filter);
-		console.log('result::', result);
         return result;
     }
 }

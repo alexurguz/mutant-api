@@ -6,7 +6,7 @@
  */
 export default class DnaMapper {
     dna: string [];
-	isMutant: boolean;
+	isMutant: boolean = false;
 
     constructor(
         dna: string [],

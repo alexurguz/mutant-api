@@ -7,7 +7,7 @@ import Database from '../../../datasource/database';
 import GetDnaIfExistsRepository from '../repository/GetDnaIfExistsRepository';
 import GetDnaIfExistsUseCase from '../use-case/GetDnaIfExistsUseCase';
 import SaveMutantRepository from '../repository/SaveMutantRepository';
-import SaveMutantUseCase from '../use-case/SaveMutantUseCase';
+import VerifyMutantUseCase from '../use-case/VerifyMutantUseCase';
 import ApiError from '../../../domain/errors/ApiError';
 import Dna from "../../../domain/models/Dna";
 import DnaMapper from "../../../domain/mapper/DnaMapper";
@@ -19,13 +19,13 @@ interface DnaValidatorRequestSchema extends ValidatedRequestSchema {
     }
 }
 
-export default class SaveMutantRoute implements IRoute {
+export default class VerifyMutantRoute implements IRoute {
     async register(server: Server, database: Database<any>): Promise<any> {
 
         const getDnaIfExistsRepository = new GetDnaIfExistsRepository(database);
         const getDnaIfExistsUseCase = new GetDnaIfExistsUseCase(getDnaIfExistsRepository);
         const saveMutantRepository = new SaveMutantRepository(database);
-        const saveMutantUseCase = new SaveMutantUseCase(saveMutantRepository, getDnaIfExistsUseCase);
+        const verifyMutantUseCase = new VerifyMutantUseCase(saveMutantRepository, getDnaIfExistsUseCase);
         const validator = createValidator();
 
         const querySchema = Joi.object({
@@ -38,11 +38,9 @@ export default class SaveMutantRoute implements IRoute {
             async (req: ValidatedRequest<DnaValidatorRequestSchema>, res: express.Response) => {
             try {
                 const dnaMapper: DnaMapper = req.body as DnaMapper; 
-
-				dnaMapper.isMutant = false;
                 const dna: Dna = new Dna(dnaMapper.dna, dnaMapper.isMutant);
-                await saveMutantUseCase.exec(dna);
-				console.log('Dna::', dna.isMutant);
+                await verifyMutantUseCase.exec(dna);
+
 				if ( dna.isMutant ){
 					return res.status(200).json();
 				} else {
@@ -86,5 +84,4 @@ export default class SaveMutantRoute implements IRoute {
 
 		return value;
 	};
-
 }
