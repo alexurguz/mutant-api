@@ -34,7 +34,7 @@ export default class VerifyMutantRoute implements IRoute {
 				.custom(this.validateAllowStringsDna, "custom validation")
         });
 
-        server.getApp()?.post('/mutant', validator.body(querySchema),
+        server.getApp()?.post('/mutant/', validator.body(querySchema),
             async (req: ValidatedRequest<DnaValidatorRequestSchema>, res: express.Response) => {
             try {
                 const dnaMapper: DnaMapper = req.body as DnaMapper; 
