@@ -2,7 +2,6 @@ import Respository from "../../../domain/Repository";
 import UseCase from "../../../domain/UseCase";
 import Dna from "../../../domain/models/Dna";
 import GetDnaIfExistsUseCase from './GetDnaIfExistsUseCase';
-import DnaExistError from '../../../domain/errors/DnaExistError';
 
 export default class SaveMutantUseCase extends UseCase<any> {
     constructor(
@@ -23,10 +22,9 @@ export default class SaveMutantUseCase extends UseCase<any> {
     async exec(dnaData : Dna): Promise<any> {
         const dna = await this.getDnaIfExistsUseCase.exec(dnaData.dna);
 		console.log('dna::', JSON.stringify(dna));
-        if (dna) {
-            throw new DnaExistError(dnaData.dna);
+        if (!dna) {
+            await this.repository.exec(dnaData);
         }
-        await this.repository.exec(dnaData);
         return dnaData;
     }
 }
