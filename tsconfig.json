@@ -16,7 +16,9 @@
     "declaration": true,
     "declarationDir": "dist/types",
     "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+	"keyofStringsOnly": true,
+	"useUnknownInCatchVariables": false
   },
   "exclude": [
     "src/init-mongo.js"
