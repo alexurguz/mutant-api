@@ -18,7 +18,7 @@ export default class MongoDatabase implements Database<Db> {
         const uri: string = LoadEnv.DATABASE_CONNECTION_URI!!;
 
         // Create a new MongoClient
-        this._instance = new MongoClient(uri, { useUnifiedTopology: true });
+        this._instance = new MongoClient(uri);
 
         // Connect the client to the server
         await this._instance.connect();

@@ -1,4 +1,4 @@
-import { Db, ObjectID } from "mongodb";
+import { Db } from "mongodb";
 import Database from "../../../datasource/database";
 import { MongoCollection } from "../../../datasource/database/mongo";
 import Respository from "../../../domain/Repository";
