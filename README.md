@@ -60,9 +60,7 @@ This project was implemented using the next tools or libraries:
         docker-compose up database
         docker-compose up server
         ```
-
-# Run load script
-
+	
 ### **Resources**
 
 - `docs/api.html`
@@ -103,6 +101,10 @@ This project was implemented using the next tools or libraries:
     docker-compose up --build server
     # Only database
     docker-compose up --build database
+    ```
+- Execute build:
+    ```bash
+    docker build .
     ```
 
 ### **Execute in aws instance**
