@@ -9,7 +9,7 @@
 - [Adicional information (Optional)](#adicional-information-optional)
     - [Docker compose commands](#docker-compose-commands)
     - [Execute on development mode](#execute-on-development-mode)
-    - [Execute in AWS instance](#Execute in AWS instance)
+    - [Execute in AWS instance](#Execute-in-AWS-instance)
 
 
 # Project implementation summary
