@@ -15,8 +15,9 @@
     "copy:config": "./node_modules/.bin/cpy 'config/**/*' 'config/**/.*' '!**/*.ts' ./dist/ --no-overwrite --parents",
     "copy:initdb": "./node_modules/.bin/cpy 'src/init-mongo.js' ./dist/ --no-overwrite --parents",
     "copy:env:dev": "./node_modules/.bin/cpy './config/.env.dev' './' --rename='.env' --overwrite",
-    "copy:all": "./node_modules/.bin/run-s copy:config copy:initdb"
-  },
+    "copy:all": "./node_modules/.bin/run-s copy:config copy:initdb",
+	"coverage": "jest --collect-coverage"
+ },
   "engines": {
     "node": "12.8.3",
     "npm": "6.9.0"
