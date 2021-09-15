@@ -9,6 +9,7 @@
 - [Adicional information (Optional)](#adicional-information-optional)
     - [Docker compose commands](#docker-compose-commands)
     - [Execute on development mode](#execute-on-development-mode)
+    - [Execute in AWS instance](#Execute in AWS instance)
 
 
 # Project implementation summary
@@ -107,7 +108,7 @@ This project was implemented using the next tools or libraries:
     docker build .
     ```
 
-### **Execute in aws instance**
+### **Execute in AWS instance**
 
 Can you execute the API by middle os Amazon services using the address [mutant-api-lb-1966800163.us-east-1.elb.amazonaws.com](mutant-api-lb-1966800163.us-east-1.elb.amazonaws.com), by the idea is to use the Postman collection and environments shared in the `docs/` folder, that folder contains the API specification using raml and Postman can you look the documentation in [Resources](#resources)
 
