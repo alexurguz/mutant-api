@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"dna\":[\"ATGCGA\",\"CAGTGC\",\"TTATGT\",\"AGAAGG\",\"CCCCTA\",\"ACACTG\"] }",
+							"raw": "{ \"dna\":[\"ATGCGA\",\"GAGTGA\",\"CTATGT\",\"AGAAGG\",\"CCCCTA\",\"ACAGTT\"] }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -72,7 +72,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": " "
 						},
 						"url": {
 							"raw": "{{host}}/stats/",

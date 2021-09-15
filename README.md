@@ -67,7 +67,8 @@ This project was implemented using the next tools or libraries:
 
 - `docs/api.html`
 - `docs/postman/Meli-mutant-api.postman_collection.json`
-- `docs/postman/Meli-mutant-api.postman_environment.json`
+- `docs/postman/Meli mutant environmetn production.postman_environment.json`
+- `Meli mutant environmetn local.postman_environment.json`
 
 # Adicional information (Optional)
 
@@ -104,6 +105,11 @@ This project was implemented using the next tools or libraries:
     docker-compose up --build database
     ```
 
+### **Execute in aws instance**
+
+Can you execute the API by middle os Amazon services using the address [mutant-api-lb-1966800163.us-east-1.elb.amazonaws.com](mutant-api-lb-1966800163.us-east-1.elb.amazonaws.com), by the idea is to use the Postman collection and environments shared in the `docs/` folder, that folder contains the API specification using raml and Postman can you look the documentation in [Resources](#resources)
+
+
 ### **Execute on development mode**
 
 **IMPORTANT:** The next commands must be executed on root project directory.
@@ -138,3 +144,34 @@ This project was implemented using the next tools or libraries:
     npm run coverage
     ```
 
+  ```bash
+	------------------------------|---------|----------|---------|---------|-------------------
+	File                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+	------------------------------|---------|----------|---------|---------|-------------------
+	All files                     |   93.87 |    68.57 |   92.86 |   93.59 |                   
+ 	 datasource/database/mongo    |   69.57 |       50 |   83.33 |   69.57 |                   
+      index.ts                    |   69.57 |       50 |   83.33 |   69.57 | 29-34,46-49,54    
+     domain                       |     100 |      100 |     100 |     100 |                   
+      Repository.ts               |     100 |      100 |     100 |     100 |                   
+      UseCase.ts                  |     100 |      100 |     100 |     100 |                   
+     helpers                      |     100 |       50 |     100 |     100 |                   
+      Constants.ts                |     100 |      100 |     100 |     100 |                   
+      LoadEnv.ts                  |     100 |       50 |     100 |     100 | 6                 
+     modules/analytics/repository |     100 |       50 |     100 |     100 |                   
+      GetStatsRepository.ts       |     100 |       50 |     100 |     100 | 11                
+     modules/analytics/use-case   |     100 |      100 |     100 |     100 |                   
+      GetStatsUseCase.ts          |     100 |      100 |     100 |     100 |                   
+     modules/mutant/repository    |   83.33 |      100 |      50 |   83.33 |                   
+      GetDnaIfExistsRepository.ts |     100 |      100 |     100 |     100 |                   
+      SaveMutantRepository.ts     |      60 |      100 |       0 |      60 | 9-10              
+     modules/mutant/use-case      |   94.74 |       50 |     100 |   94.74 |                   
+      GetDnaIfExistsUseCase.ts    |     100 |      100 |     100 |     100 |                   
+      VerifyMutantUseCase.ts      |   92.31 |       50 |     100 |   92.31 | 30                
+     modules/shared/repository    |     100 |      100 |     100 |     100 |                   
+      PingRepository.ts           |     100 |      100 |     100 |     100 |                   
+     modules/shared/use-case      |     100 |      100 |     100 |     100 |                   
+      PingUseCase.ts              |     100 |      100 |     100 |     100 |                   
+     service                      |     100 |    88.24 |     100 |     100 |                   
+      isMutantService.ts          |     100 |    88.24 |     100 |     100 | 42,57             
+    ------------------------------|---------|----------|---------|---------|-------------------
+  ```
